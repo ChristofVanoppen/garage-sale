@@ -1,0 +1,41 @@
+@extends('index')
+
+@section('content')
+
+<a class="login-logo" href="/"><img src="{{asset('images/logoo.png')}}" alt="Logo"></a>
+<div class="row login__photo">
+    <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4 "></div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 login__form__container ">
+          
+        <div class="col-md-12 col-xs-12 login__container login__content">
+            <!--<h1>Login als klant en plaats je project.<br/><br /> <h3>Login als aannemer en ga opzoek naar opdrachten.</h3></h1>-->
+            
+            <!--<p class="login__social"><a href="https://www.facebook.com/workplacebe">Facebook</a><span class="login__circle">•</span><a href="#">Twitter</a><span class="login__circle">•</span><a href="#">Instagram</a>--></p>
+        <div class="login__container login__form">
+            <h4>Inloggen</h4><br>
+            
+            
+            {!! Form::open(array('url' => 'auth/login')) !!}
+                <div class="form-group">
+                    {!! Form::email('email', $value = null, array('class' => 'form-control', 'placeholder' => 'Email')) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::password('password', array('class' => 'form-control', 'placeholder' => 'Wachtwoord')) !!}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Login </button>                    
+                </div>
+            {!! Form::close() !!}
+        </div>
+        <div class="text-center">
+            <a style="margin-left: 0px; padding-top: 20px;" class="register__link" href="/password/email">Wachtwoord vergeten?</a>
+        </div>
+    </div>
+    <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4"></div>
+    
+</div>
+<div class="text-center signuplink">
+        <span class="white-font">Nog geen account?</span> <a style="margin-left: 0px;" class="register" href="register">Registreer</a>
+    </div>
+</div>
+@endsection
