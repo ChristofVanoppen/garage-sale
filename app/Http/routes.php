@@ -25,3 +25,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('home', 'app@getHome');
 
+Route::get('create', 'app@getCreate');
+Route::post('create', 'app@postCreate');
+
