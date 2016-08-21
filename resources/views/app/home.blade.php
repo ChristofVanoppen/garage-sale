@@ -10,11 +10,24 @@
 	@foreach ($products as $product)
 	  
     <div class="form-products"> 
-		<li>Titel: {{ $product->title }}</li>
-		<li>Prijs: {{ $product->price }}</li>
-		<li>Beschrijving: {{ $product->description }}</li>
-		<li>Categorie: {{ $product->category }}</li>
-		 </div>
+    	<div class="row">
+    		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+    		<div class="col-md-4 col-sm-4 col-xs-4">
+				<li class="titel">{{ $product->title }}</li>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<li class="prijs">{{ $product->price }} euro</li>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<li class="beschrijving">Beschrijving:<br> {{ $product->description }}</li>
+			</div>
+			<div class="col-md-12">
+				<br><li class="categorie">Categorie: {{ $product->category }}</li>
+			</div>
+		</div>
+	</div>
   
 	@endforeach
 
