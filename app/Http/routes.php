@@ -28,3 +28,8 @@ Route::get('home', 'app@getHome');
 Route::get('create', 'app@getCreate');
 Route::post('create', 'app@postCreate');
 
+Route::get('remove/{id}','app@getRemove');
+
+Route::get('modify/{id}','app@getModify');
+Route::post('modify/{id}','app@postModify');
+
