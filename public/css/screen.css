@@ -14,10 +14,6 @@ body {
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,0.1);  
-
-  .form-signin-heading,
-    .checkbox {
-      margin-bottom: 30px;
     }
 
     .checkbox {
@@ -47,4 +43,34 @@ body {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+}
+
+li{
+    list-style: none;
+  }
+.form-products {
+    max-width: 380px;
+    padding: 15px 35px 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.1); 
+    list-style: none; 
+    }
+a:link, a:visited {
+    background-color: #337AB7;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+a:hover, a:active {
+    background-color: #286090;
+    border-radius: 5px;
+}
+.plaatsproduct
+{
+  margin-top: 15px;
+  margin-left: 15px;
 }

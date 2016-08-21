@@ -1,13 +1,21 @@
 @extends('index')
 
 @section('content')
-	<a href="/create">plaats product</a>
+	<a class="plaatsproduct" href="/create">plaats product</a>
+
+
+    <h1 class="text-center"><small>Alle Producten</small></h1>
+
 
 	@foreach ($products as $product)
-		<li>{{ $product->title }}</li>
-		<li>{{ $product->price }}</li>
-		<li>{{ $product->description }}</li>
-		<li>{{ $product->category }}</li>
+	  
+    <div class="form-products"> 
+		<li>Titel: {{ $product->title }}</li>
+		<li>Prijs: {{ $product->price }}</li>
+		<li>Beschrijving: {{ $product->description }}</li>
+		<li>Categorie: {{ $product->category }}</li>
+		 </div>
+  
 	@endforeach
 
 @endsection
