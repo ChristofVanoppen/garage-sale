@@ -33,3 +33,6 @@ Route::get('remove/{id}','app@getRemove');
 Route::get('modify/{id}','app@getModify');
 Route::post('modify/{id}','app@postModify');
 
+Route::get('favorite','app@getFavorite');
+Route::post('favorite','app@postFavorite');
+

@@ -3,6 +3,8 @@
 	<title></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{asset('css/screen.css')}}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <meta name="_token" content="{{ csrf_token() }}">
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -23,10 +25,11 @@
       <ul class="nav navbar-nav">
         <li><a href="home">Alle producten</a></li>
         <li><a href="create">Maak product</a></li>
+        <li><a href="favorite">Mijn favorieten</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="...">
+          <input id='search' type="text" class="form-control" placeholder="...">
         </div>
         <button type="submit" class="btn btn-default">Zoek</button>
       </form>

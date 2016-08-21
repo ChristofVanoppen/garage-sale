@@ -12,7 +12,12 @@ class CreateFavoritesTable extends Migration
      */
     public function up()
     {
-        //
+       Schema::create('favorites', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('userId');
+            $table->integer('productId');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +27,6 @@ class CreateFavoritesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('favorites');
     }
 }

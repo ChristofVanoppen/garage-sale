@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Product;
+use App\Favorite;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 
 class app extends Controller
@@ -21,6 +23,29 @@ class app extends Controller
 
         $user = Auth::user();
         $products = Product::all();
+        
+        $favorites = Favorite::where('userId',$user->id)->select('productId')->get();
+
+        $array=array();
+
+        foreach ($favorites as $favorite) 
+        {
+            $array[] += $favorite->productId;
+        }
+
+        $array = array_flip($array);
+
+        foreach ($products as $product) {
+            if (array_key_exists($product->id,$array))
+            {
+                $product->favorite = 'yes';
+            }
+            else
+            {
+                $product->favorite = 'no';
+            }
+        } 
+
         return view('app.home')->with(compact('products','user'));
     }
 
@@ -76,6 +101,8 @@ class app extends Controller
         {
             return redirect('/home')->withErrors(['Dit product is niet van u']);
         }
+        
+        Favorite::where('productId',$productId)->delete();
 
         $product->delete();
 
@@ -149,5 +176,53 @@ class app extends Controller
 
        return redirect('/home')->with('message','Dit product is bewerkt!');
         
+    }
+
+     public function getFavorite()
+    {
+        if (!Auth::check()) 
+        {
+            return redirect('/auth/login')->withErrors(['Je moet aangemeld zijn.']);
+        }
+
+        $user = auth::user();
+
+        $favorites = Favorite::where('userId', $user->id)->select('productId')->get();
+
+        foreach ($favorites as $favorite) {
+            $favorite->product=Product::find($favorite->productId);
+        }
+
+        return view('app.favorite')->with(compact('favorites','user'));
+    }
+
+    public function postFavorite()
+    {
+        $data = Input::all();;
+        if (!Auth::check()) 
+        {
+            return redirect('/auth/login')->withErrors(['Je moet aangemeld zijn.']);
+        }
+
+        $user = auth::user();
+
+        $check = Favorite::where('userId',$user->id)->where('productId',$data['id'])->count();
+
+        if($check == 0)
+        {
+            $favorite = new Favorite();
+            $favorite->userId = $user->id;
+            $favorite->productId = $data['id'];
+            $favorite->save();
+            $html = 'Ontvolg';
+        }
+        else
+        {
+
+            Favorite::where('userId',$user->id)->where('productId',$data['id'])->delete();
+            $html = 'Volg';
+        }
+
+       return $html;
     }
 }
