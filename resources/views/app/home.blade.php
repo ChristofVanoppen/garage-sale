@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('content')
-	<a class="plaatsproduct" href="/create">plaats product</a>
+	
 
 
     <h1 class="text-center"><small>Alle Producten</small></h1>

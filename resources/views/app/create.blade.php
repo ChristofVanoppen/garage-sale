@@ -3,7 +3,7 @@
 @section('content')
   <div class="wrapper">
     <div class="form-signin">       
-      <h2 class="form-signin-heading">Maak product aan</h2>
+      <h1 class="text-center"><small>Maak een product aan</small></h1>
             
   	{!! Form::open(array('url' => 'create')) !!}
         <div class="form-group">
@@ -24,7 +24,5 @@
     {!! Form::close() !!}
  </div>
   </div>
-      <div class="text-center signuplink">
-        <span class="white-font">Bekijk producten</span> <a style="margin-left: 0px;" class="register" href="home">Klik hier</a>
-    </div>
+
 @endsection
